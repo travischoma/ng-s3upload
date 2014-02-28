@@ -196,6 +196,7 @@ angular.module('ngS3upload.directives', []).
                       scope.filename = ngModel.$viewValue;
                       ngModel.$setValidity('uploading', true);
                       ngModel.$setValidity('succeeded', true);
+                      scope.$emit('s3upload:uploaded');
                     }, function () {
                       scope.filename = ngModel.$viewValue;
                       ngModel.$setValidity('uploading', true);
