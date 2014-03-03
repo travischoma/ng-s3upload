@@ -27,7 +27,7 @@ angular.module('ngS3upload.services', []).
     this.upload = function (scope, uri, key, acl, type, accessKey, policy, signature, file) {
       var deferred = $q.defer();
       scope.attempt = true;
-
+      scope.completed = false;
       var fd = new FormData();
       fd.append('key', key);
       fd.append('acl', acl);
