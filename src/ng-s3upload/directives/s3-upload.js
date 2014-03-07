@@ -36,6 +36,8 @@ angular.module('ngS3upload.directives', []).
               folder: ''
             }, opts);
             var bucket = attrs.bucket;
+            scope.buttonLabel = attrs.buttonLabel || "Choose File";
+            scope.replaceButtonLabel = attrs.replaceButtonLabel || "Replace File";
 
             // Bind the button click event
             var button = angular.element(element.children()[0]),
@@ -98,7 +100,7 @@ angular.module('ngS3upload.directives', []).
         };
       },
       template: '<div class="upload-wrap">' +
-        '<button class="btn btn-primary" type="button"><span ng-if="!filename">Choose file</span><span ng-if="filename">Replace file</span></button>' +
+        '<button class="btn btn-primary" type="button"><span ng-if="!filename">{{buttonLabel}}</span><span ng-if="filename">{{replaceButtonLabel}}</span></button>' +
         '<a ng-href="{{ filename  }}" target="_blank" ng-if="filename" ng-show="completed" ><img class="stored-file" src="{{ filename }}"/></a>' +
         '<div class="progress progress-striped" ng-class="{active: uploading}" ng-show="attempt && !completed" style="margin-top: 10px">' +
         '<div class="progress-bar" style="width: {{ progress }}%;" ng-class="barClass()"></div>' +
